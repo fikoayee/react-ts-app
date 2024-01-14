@@ -11,6 +11,10 @@ import PostsRootLayout from "./pages/Posts/PostsRoot";
 import NewPostPage, { action as newPost } from "./pages/Posts/NewPost";
 import EditPostPage from "./pages/Posts/EditPost";
 
+
+import ToDosRootLayout from "./pages/ToDos/ToDosRoot";
+import ToDosPage, { loader as todosLoader} from "./pages/ToDos/ToDos";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,8 +38,7 @@ const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: <PostDetailPage />,
-                action: deletePostAction,
+                element: <PostDetailPage />
               },
               { path: "edit", element: <EditPostPage /> },
             ],
@@ -43,6 +46,18 @@ const router = createBrowserRouter([
           { path: "new", element: <NewPostPage />, action: newPost },
         ],
       },
+      {
+        path: "todos",
+        element: <ToDosRootLayout />,
+        children: [
+          {
+            index: true,
+            element: <ToDosPage />,
+            loader: todosLoader,
+          }
+        ]
+      }
+
     ],
   },
 ]);
