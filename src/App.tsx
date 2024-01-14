@@ -5,6 +5,7 @@ import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import PostDetailPage, {
   loader as postDetailLoader,
+  action as deletePostAction,
 } from "./pages/Posts/PostDetail";
 import PostsRootLayout from "./pages/Posts/PostsRoot";
 import NewPostPage, { action as newPost } from "./pages/Posts/NewPost";
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
               {
                 index: true,
                 element: <PostDetailPage />,
+                action: deletePostAction,
               },
               { path: "edit", element: <EditPostPage /> },
             ],

@@ -1,4 +1,4 @@
-import { useRouteLoaderData, json } from "react-router-dom";
+import { useRouteLoaderData, json, redirect } from "react-router-dom";
 import PostItem from "../../components/Posts/PostItem";
 
 interface Post {
@@ -36,7 +36,14 @@ export async function loader(reactRouterObj: any) {
   }
 }
 
-export async function action({params}: {}){
-  const postId = 
-  fetch("https://jsonplaceholder.typicode.com/posts/")
+export async function action(post:Post){
+  const postId = post.id
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts/"+postId)
+  if (!response.ok) {
+    throw json(
+      { message: "Could not delete post." },
+      { status: 500 }
+    );
+  }
+  return redirect('/posts')
 }

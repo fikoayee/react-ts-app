@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useSubmit } from "react-router-dom";
 import classes from "./PostItem.module.css";
 
 interface Post {
@@ -12,11 +12,13 @@ interface Props {
 }
 
 const PostItem: React.FC<Props> = ({ post }) => {
+  const submit = useSubmit();
+
   function startDeleteHandler(){
     const proceed = window.confirm("Are you sure?");
 
     if(proceed){
-      
+      submit({},)
     }
   }
 
