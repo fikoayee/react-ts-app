@@ -13,6 +13,9 @@ const MainNavigation = () => {
             <li>
               <NavLink to="/Posts" className={({isActive}) => (isActive ? classes.active : undefined)}>Posts</NavLink>
             </li>
+            <li>
+              <NavLink to="/ToDos" className={({isActive}) => (isActive ? classes.active : undefined)}>ToDos</NavLink>
+            </li>
           </ul>
         </nav>
       </header>
@@ -20,4 +23,3 @@ const MainNavigation = () => {
   );
 };
 export default MainNavigation;
-// test commit
