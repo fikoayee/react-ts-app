@@ -22,9 +22,8 @@ export async function action({ request }: { request: Request }) {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
     method: "POST",
     body: JSON.stringify({
-      title: "foo",
-      body: "bar",
-      id: 999,
+      title: postData.title,
+      body: postData.body,
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
