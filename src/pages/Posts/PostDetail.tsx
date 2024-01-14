@@ -9,8 +9,7 @@ interface Post {
 }
 
 const PostDetailPage = () => {
-  const data = useRouteLoaderData('post-detail') as Post;
-  console.log(data)
+  const data = useRouteLoaderData("post-detail") as Post;
   return (
     <>
       <PostItem post={data} />
@@ -36,14 +35,18 @@ export async function loader(reactRouterObj: any) {
   }
 }
 
-export async function action(post:Post){
-  const postId = post.id
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts/"+postId)
+export async function action(reactRouterObj: any) {
+  const id = reactRouterObj.params.postId;
+  const response = await fetch(
+    "https://jsonplaceholder.typicode.com/posts/" + id,
+    {
+      method: "DELETE",
+    }
+  );
+  response.json().then((json) => console.log(json));
+  
   if (!response.ok) {
-    throw json(
-      { message: "Could not delete post." },
-      { status: 500 }
-    );
+    throw json({ message: "Could not delete post." }, { status: 500 });
   }
-  return redirect('/posts')
+  return redirect("/posts");
 }

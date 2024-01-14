@@ -18,7 +18,7 @@ const PostItem: React.FC<Props> = ({ post }) => {
     const proceed = window.confirm("Are you sure?");
 
     if(proceed){
-      submit({},)
+      submit(null, {method: 'delete'},)
     }
   }
 
