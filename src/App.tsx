@@ -1,25 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import HomePage from "./pages/Home";
+import PostsPage, { loader as postsLoader } from "./pages/Posts/Posts";
+import RootLayout from "./pages/Root";
+import ErrorPage from "./pages/Error";
+import PostDetailPage, {
+  loader as postDetailLoader,
+} from "./pages/Posts/PostDetail";
+import PostsRootLayout from "./pages/Posts/PostsRoot";
+import NewPostPage, { action as newPost } from "./pages/Posts/NewPost";
+import EditPostPage from "./pages/Posts/EditPost";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <HomePage /> },
+      {
+        path: "posts",
+        element: <PostsRootLayout />,
+        children: [
+          {
+            index: true,
+            element: <PostsPage />,
+            loader: postsLoader,
+          },
+          {
+            path: ":postId",
+            id: "post-detail",
+            loader: postDetailLoader,
+            children: [
+              {
+                index: true,
+                element: <PostDetailPage />,
+              },
+              { path: "edit", element: <EditPostPage /> },
+            ],
+          },
+          { path: "new", element: <NewPostPage />, action: newPost },
+        ],
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 
