@@ -1,17 +1,18 @@
 import { Link, useSubmit } from "react-router-dom";
 import classes from "./AlbumItem.module.css";
 
-interface Album {
+interface Albums {
     userId: number;
     id: number;
     title: string;
 }
 
 interface Props {
-  album: Album;
+  albums: Albums;
 }
 
-const AlbumItem: React.FC<Props> = ({ album }) => {
+const AlbumsItem: React.FC<Props> = ({ albums }) => {
+  console.log("AlbumsItem", albums);
   const submit = useSubmit();
 
   function startDeleteHandler(){
@@ -24,12 +25,12 @@ const AlbumItem: React.FC<Props> = ({ album }) => {
 
   return (
     <article className={classes.albums}>
-      <h1>{album.title}</h1>
+      <h1>{albums.title}</h1>
       <menu className={classes.actions}>
-        <Link to={`/albums/${album.id}/edit`}>Edit</Link>
+        <Link to={`/albums/${albums.id}/edit`}>Edit</Link>
         <button onClick={startDeleteHandler}>Delete</button>
       </menu>
     </article>
   );
 }
-export default AlbumItem;
+export default AlbumsItem;

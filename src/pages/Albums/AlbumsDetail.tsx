@@ -11,7 +11,7 @@ const AlbumsDetailPage = () => {
   const data = useRouteLoaderData('albums-detail') as Albums;
   return (
     <>
-      <AlbumsItem album={data} />
+      <AlbumsItem albums={data} />
     </>
   );
 };

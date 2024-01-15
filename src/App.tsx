@@ -98,7 +98,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":albumId",
-            id: "album-detail",
+            id: "albums-detail",
             loader: albumsDetailLoader,
             children: [
               {
