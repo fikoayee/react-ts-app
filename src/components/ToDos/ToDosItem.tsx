@@ -18,8 +18,8 @@ const ToDosItem: React.FC<Props> = ({ todo }) => {
   function startDeleteHandler(){
     const proceed = window.confirm("Are you sure?");
 
-    if (proceed) {
-      submit(null, { method: "DELETE" });
+    if(proceed){
+      submit(null, { method: "delete" });
     }
   }
 

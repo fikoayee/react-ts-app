@@ -35,19 +35,19 @@ export async function loader(reactRouterObj: any) {
     }
 }
 
-export async function action(reactRouterObj:any){
-    const id = reactRouterObj.params.todoId;
-    const response = await fetch(
-        "https://jsonplaceholder.typicode.com/todos/" + id,
-        {
-            method: "DELETE",
-        }
-    );
-    response.json().then((json) => console.log("success", json));
+export async function action(reactRouterObj: any){
+    console.log(reactRouterObj.params.todoId)
+    const todosId = reactRouterObj.params.todoId;
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos/"+todosId)
     
     if (!response.ok) {
-        console.log("error");
-        throw json({ message: "Could not delete todos." }, { status: 500 });
+        throw json(
+            { message: "Could not delete todos." },
+            { status: 500 }
+        );
+    }else{
+        response.json().then((json) => console.log("success", json));
     }
-    return redirect("/todos");
+    
+    return redirect('/todos')
 }

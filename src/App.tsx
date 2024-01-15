@@ -12,7 +12,7 @@ import NewPostPage, { action as newPost } from "./pages/Posts/NewPost";
 import EditPostPage from "./pages/Posts/EditPost";
 
 import ToDosRootLayout from "./pages/ToDos/ToDosRoot";
-import ToDosPage, { loader as todosLoader} from "./pages/ToDos/ToDos";
+import ToDosPage, { loader as todosLoader } from "./pages/ToDos/ToDos";
 import { Children } from "react";
 import ToDosDetailPage, {
   loader as todosDetailLoader,
@@ -66,15 +66,15 @@ const router = createBrowserRouter([
             path: ":todoId",
             id: "todos-detail",
             loader: todosDetailLoader,
-          children: [
-            {
-              index: true,
-              element: <ToDosDetailPage />,
-              action: deleteToDosAction,
-            },
-            { path: "edit", element: <EditToDosPage /> },
-          ],
-        },
+            children: [
+              {
+                index: true,
+                element: <ToDosDetailPage />,
+                action: deleteToDosAction,
+              },
+              { path: "edit", element: <EditToDosPage /> },
+            ],
+          },
           { path: "new", element: <NewToDosPage />, action: newToDos },
         ],
       },
