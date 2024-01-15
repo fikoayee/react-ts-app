@@ -9,10 +9,10 @@ interface ToDos {
 }
 
 interface Props {
-  todos: ToDos;
+  todo: ToDos;
 }
 
-const ToDosItem: React.FC<Props> = ({ todos }) => {
+const ToDosItem: React.FC<Props> = ({ todo }) => {
   const submit = useSubmit();
 
   function startDeleteHandler(){
@@ -24,16 +24,14 @@ const ToDosItem: React.FC<Props> = ({ todos }) => {
   }
 
   return (
-    <>
-      <article className={classes.todos}>
-        <h1>{todos.title}</h1>
-        <p>{todos.completed}</p>
-        <menu className={classes.actions}>
-          <Link to={`/todos/${todos.id}/edit`}>Edit</Link>
-          <button onClick={startDeleteHandler}>Delete</button>
-        </menu>
-      </article>
-    </>
+    <article className={classes.todos}>
+      <h1>{todo.title}</h1>
+      <p>{todo.completed.toString()}</p>
+      <menu className={classes.actions}>
+        <Link to={`/todos/${todo.id}/edit`}>Edit</Link>
+        <button onClick={startDeleteHandler}>Delete</button>
+      </menu>
+    </article>
   );
 }
 export default ToDosItem;

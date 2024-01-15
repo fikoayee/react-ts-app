@@ -8,15 +8,14 @@ interface ToDos {
     completed: boolean;
  }
 
-const ToDosDetailPage = () => {
+ const ToDosDetailPage = () => {
     const data = useRouteLoaderData('todos-detail') as ToDos;
-    console.log(data)
     return (
-        <>
-            <ToDosItem todos={data} />
-        </>
+      <>
+        <ToDosItem todo={data} />
+      </>
     );
-};
+  };
 export default ToDosDetailPage;
 
 export async function loader(reactRouterObj: any) {
