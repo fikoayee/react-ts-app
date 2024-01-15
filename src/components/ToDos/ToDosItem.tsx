@@ -19,7 +19,6 @@ const ToDosItem: React.FC<Props> = ({ todo }) => {
     const proceed = window.confirm("Are you sure?");
 
     if (proceed) {
-      console.log("delete");
       submit(null, { method: "DELETE" });
     }
   }
