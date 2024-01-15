@@ -36,14 +36,19 @@ export async function loader(reactRouterObj: any) {
     }
 }
 
-export async function action(todos:ToDos){
-    const todosId = todos.id
+export async function action(reactRouterObj: any){
+    console.log(reactRouterObj.params.todoId)
+    const todosId = reactRouterObj.params.todoId;
     const response = await fetch("https://jsonplaceholder.typicode.com/todos/"+todosId)
+    
     if (!response.ok) {
         throw json(
             { message: "Could not delete todos." },
             { status: 500 }
         );
+    }else{
+        response.json().then((json) => console.log("success", json));
     }
+    
     return redirect('/todos')
 }

@@ -53,18 +53,3 @@ const CommentsList: React.FC<Props> = ({ postId }) => {
 
 export default CommentsList;
 
-// export async function fetchData(postId: number) {
-//   const response = await fetch(
-//     "https://jsonplaceholder.typicode.com/comments/"
-//   );
-
-//   if (!response.ok) {
-//     throw json(
-//       { message: "Could not fetch comments for selected post." },
-//       { status: 500 }
-//     );
-//   } else {
-//     const postData: Comment[] = await response.json(); // Extract JSON data from the response
-//     return postData;
-//   }
-// }
