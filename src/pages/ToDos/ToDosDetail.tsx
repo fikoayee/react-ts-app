@@ -8,15 +8,14 @@ interface ToDos {
     completed: boolean;
  }
 
-const ToDosDetailPage = () => {
+ const ToDosDetailPage = () => {
     const data = useRouteLoaderData('todos-detail') as ToDos;
-    console.log(data)
     return (
-        <>
-            <ToDosItem todos={data} />
-        </>
+      <>
+        <ToDosItem todo={data} />
+      </>
     );
-};
+  };
 export default ToDosDetailPage;
 
 export async function loader(reactRouterObj: any) {
@@ -36,14 +35,19 @@ export async function loader(reactRouterObj: any) {
     }
 }
 
-export async function action(todos:ToDos){
-    const todosId = todos.id
-    const response = await fetch("https://jsonplaceholder.typicode.com/todos/"+todosId)
+export async function action(reactRouterObj:any){
+    const id = reactRouterObj.params.todoId;
+    const response = await fetch(
+        "https://jsonplaceholder.typicode.com/todos/" + id,
+        {
+            method: "DELETE",
+        }
+    );
+    response.json().then((json) => console.log("success", json));
+    
     if (!response.ok) {
-        throw json(
-            { message: "Could not delete todos." },
-            { status: 500 }
-        );
+        console.log("error");
+        throw json({ message: "Could not delete todos." }, { status: 500 });
     }
-    return redirect('/todos')
+    return redirect("/todos");
 }

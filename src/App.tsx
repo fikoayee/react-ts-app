@@ -44,7 +44,8 @@ const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: <PostDetailPage />
+                element: <PostDetailPage />,
+                action: deletePostAction,
               },
               { path: "edit", element: <EditPostPage /> },
             ],
@@ -68,7 +69,8 @@ const router = createBrowserRouter([
           children: [
             {
               index: true,
-              element: <ToDosDetailPage />
+              element: <ToDosDetailPage />,
+              action: deleteToDosAction,
             },
             { path: "edit", element: <EditToDosPage /> },
           ],
