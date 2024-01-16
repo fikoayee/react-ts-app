@@ -19,6 +19,9 @@ const MainNavigation = () => {
             <li>
               <NavLink to="/Users" className={({isActive}) => (isActive ? classes.active : undefined)}>Users</NavLink>
             </li>
+            <li>
+              <NavLink to="/Albums" className={({isActive}) => (isActive ? classes.active : undefined)}>Albums</NavLink>
+            </li>
           </ul>
         </nav>
       </header>

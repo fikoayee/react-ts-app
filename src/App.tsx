@@ -10,6 +10,8 @@ import PostDetailPage, {
 import PostsRootLayout from "./pages/Posts/PostsRoot";
 import NewPostPage from "./pages/Posts/NewPost";
 import EditPostPage from "./pages/Posts/EditPost";
+
+// import for todos
 import ToDosRootLayout from "./pages/ToDos/ToDosRoot";
 import ToDosPage, { loader as todosLoader } from "./pages/ToDos/ToDos";
 import ToDosDetailPage, {
@@ -18,12 +20,25 @@ import ToDosDetailPage, {
 } from "./pages/ToDos/ToDosDetail";
 import EditToDosPage from "./pages/ToDos/EditToDos";
 import NewToDosPage, { action as newToDos } from "./pages/ToDos/NewToDos";
+
+// import for users
 import { action as addAndEditPostAction } from "./components/Posts/PostForm";
 import UsersPage, {loader as usersLoader} from "./pages/Users/Users";
 import UserDetailPage, {loader as userDetailLoader, action as deleteUserAction} from "./pages/Users/UserDetail";
 import { action as addAndEditUsertAction } from "./components/Users/UserForm";
 import EditUserPage from "./pages/Users/EditUser";
 import NewUserPage from "./pages/Users/NewUser";
+
+// import for albums
+import AlbumsRootLayout from "./pages/Albums/AlbumsRoot";
+import AlbumsPage, { loader as albumsLoader } from "./pages/Albums/Albums";
+import AlbumsDetailPage, {
+  loader as albumsDetailLoader,
+  action as deleteAlbumsAction,
+} from "./pages/Albums/AlbumsDetail";
+import EditAlbumPages from "./pages/Albums/EditAlbums";
+import NewAlbumPages, { action as newAlbum } from "./pages/Albums/NewAlbums";
+
 
 const router = createBrowserRouter([
   {
@@ -120,6 +135,31 @@ const router = createBrowserRouter([
             ],
           },
           { path: "new", element: <NewToDosPage />, action: newToDos },
+        ],
+      },
+      {
+        path: "albums",
+        element: <AlbumsRootLayout />,
+        children: [
+          {
+            index: true,
+            element: <AlbumsPage />,
+            loader: albumsLoader,
+          },
+          {
+            path: ":albumId",
+            id: "albums-detail",
+            loader: albumsDetailLoader,
+            children: [
+              {
+                index: true,
+                element: <AlbumsDetailPage />,
+                action: deleteAlbumsAction,
+              },
+              { path: "edit", element: <EditAlbumPages /> },
+            ],
+          },
+          { path: "new", element: <NewAlbumPages />, action: newAlbum},
         ],
       },
     ],
