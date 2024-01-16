@@ -10,7 +10,6 @@ interface Post {
 interface Props {
   posts: Post[];
 }
-
 const PostsList: React.FC<Props> = ({ posts }) => {
   return (
     <>

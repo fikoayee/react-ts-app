@@ -1,5 +1,5 @@
 import PostForm from "../../components/Posts/PostForm";
-import { useRouteLoaderData } from "react-router-dom";
+import { json, redirect, useRouteLoaderData } from "react-router-dom";
 
 interface Post {
   userId: number;
@@ -9,12 +9,15 @@ interface Post {
 }
 
 const EditPostPage = () => {
-  const data = useRouteLoaderData('post-detail') as Post;
+  const data = useRouteLoaderData("post-detail") as Post;
 
   return (
     <>
-      <PostForm post={data} />
+      <PostForm method='patch' post={data} />
     </>
   );
 };
 export default EditPostPage;
+
+
+

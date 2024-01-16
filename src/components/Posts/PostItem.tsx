@@ -38,11 +38,11 @@ const PostItem: React.FC<Props> = ({ post }) => {
         <menu className={classes.actions}>
           <Link to={`/posts/${post.id}/edit`}>Edit</Link>
           <button onClick={startDeleteHandler}>Delete</button>
-          <button onClick={addCommentHandler}>Comment</button>
+          <button onClick={addCommentHandler}>{addComment ? 'Show Comments' : 'Add Comment'}</button>
         </menu>
       </article>
       {addComment ? (
-        <CommentForm postId={post.id} />
+        <CommentForm postId={post.id} onCommentAdd={addCommentHandler} />
       ) : (
         <CommentsList postId={post.id} />
       )}

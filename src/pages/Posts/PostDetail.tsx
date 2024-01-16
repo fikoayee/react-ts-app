@@ -44,7 +44,6 @@ export async function action(reactRouterObj: any) {
     }
   );
   response.json().then((json) => console.log(json));
-
   if (!response.ok) {
     throw json({ message: "Could not delete post." }, { status: 500 });
   }

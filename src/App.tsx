@@ -6,11 +6,11 @@ import ErrorPage from "./pages/Error";
 import PostDetailPage, {
   loader as postDetailLoader,
   action as deletePostAction,
+  action as updatePostAction,
 } from "./pages/Posts/PostDetail";
 import PostsRootLayout from "./pages/Posts/PostsRoot";
-import NewPostPage, { action as newPost } from "./pages/Posts/NewPost";
+import NewPostPage from "./pages/Posts/NewPost";
 import EditPostPage from "./pages/Posts/EditPost";
-
 import ToDosRootLayout from "./pages/ToDos/ToDosRoot";
 import ToDosPage, { loader as todosLoader } from "./pages/ToDos/ToDos";
 import { Children } from "react";
@@ -20,6 +20,7 @@ import ToDosDetailPage, {
 } from "./pages/ToDos/ToDosDetail";
 import EditToDosPage from "./pages/ToDos/EditToDos";
 import NewToDosPage, { action as newToDos } from "./pages/ToDos/NewToDos";
+import { action as addAndEditPostAction } from "./components/Posts/PostForm";
 
 const router = createBrowserRouter([
   {
@@ -47,10 +48,18 @@ const router = createBrowserRouter([
                 element: <PostDetailPage />,
                 action: deletePostAction,
               },
-              { path: "edit", element: <EditPostPage /> },
+              {
+                path: "edit",
+                element: <EditPostPage />,
+                action: addAndEditPostAction,
+              },
             ],
           },
-          { path: "new", element: <NewPostPage />, action: newPost },
+          {
+            path: "new",
+            element: <NewPostPage />,
+            action: addAndEditPostAction,
+          },
         ],
       },
       {
