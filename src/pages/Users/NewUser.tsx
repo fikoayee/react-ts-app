@@ -1,11 +1,10 @@
-
 import UserForm from "../../components/Users/UserForm";
 
-const NewPostPage = () => {
+const NewUserPage = () => {
   return (
     <>
       <UserForm method="post" />
     </>
   );
 };
-export default NewPostPage;
+export default NewUserPage;

@@ -1,5 +1,5 @@
-import PostForm from "../../components/Posts/PostForm";
-import { json, redirect, useRouteLoaderData } from "react-router-dom";
+import { useRouteLoaderData, json, redirect } from "react-router-dom";
+import UserItem from "../../components/Users/UserItem";
 import UserForm from "../../components/Users/UserForm";
 
 interface User {
@@ -12,30 +12,26 @@ interface User {
     suite: string;
     city: string;
     zipcode: string;
-    geo: {
-      lat: number;
-      lng: number;
-    };
-  };
+    geo:{
+        lat: number,
+        lng: number
+    }
+  },
   phone: string;
   website: string;
   company: {
     name: string;
     catchPhrase: string;
-    bs: string;
-  };
+    bs: string
+  }
 }
 
-const EditPostPage = () => {
+const EditUserPage = () => {
   const data = useRouteLoaderData("user-detail") as User;
-
   return (
     <>
       <UserForm method='patch' user={data} />
     </>
   );
 };
-export default EditPostPage;
-
-
-
+export default EditUserPage

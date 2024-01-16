@@ -3,13 +3,7 @@ import classes from "./PostItem.module.css";
 import CommentsList from "../Comments/CommentsList";
 import { useState } from "react";
 import CommentForm from "../Comments/CommentForm";
-
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import {Post} from "../../interfaces/Post.interface"
 interface Props {
   post: Post;
 }
@@ -38,11 +32,11 @@ const PostItem: React.FC<Props> = ({ post }) => {
         <menu className={classes.actions}>
           <Link to={`/posts/${post.id}/edit`}>Edit</Link>
           <button onClick={startDeleteHandler}>Delete</button>
-          <button onClick={addCommentHandler}>Comment</button>
+          <button onClick={addCommentHandler}>{addComment ? 'Show Comments' : 'Add Comment'}</button>
         </menu>
       </article>
       {addComment ? (
-        <CommentForm postId={post.id} />
+        <CommentForm postId={post.id} onCommentAdd={addCommentHandler} />
       ) : (
         <CommentsList postId={post.id} />
       )}
