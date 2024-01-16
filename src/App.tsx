@@ -6,14 +6,12 @@ import ErrorPage from "./pages/Error";
 import PostDetailPage, {
   loader as postDetailLoader,
   action as deletePostAction,
-  action as updatePostAction,
 } from "./pages/Posts/PostDetail";
 import PostsRootLayout from "./pages/Posts/PostsRoot";
 import NewPostPage from "./pages/Posts/NewPost";
 import EditPostPage from "./pages/Posts/EditPost";
 import ToDosRootLayout from "./pages/ToDos/ToDosRoot";
 import ToDosPage, { loader as todosLoader } from "./pages/ToDos/ToDos";
-import { Children } from "react";
 import ToDosDetailPage, {
   loader as todosDetailLoader,
   action as deleteToDosAction,
@@ -21,6 +19,12 @@ import ToDosDetailPage, {
 import EditToDosPage from "./pages/ToDos/EditToDos";
 import NewToDosPage, { action as newToDos } from "./pages/ToDos/NewToDos";
 import { action as addAndEditPostAction } from "./components/Posts/PostForm";
+import UsersPage, {loader as usersLoader} from "./pages/Users/Users";
+import UsersRootLayout from "./pages/Users/UsersRoot";
+import UserDetailPage, {loader as userDetailLoader, action as deleteUserAction} from "./pages/Users/UserDetail";
+import { action as addAndEditUsertAction } from "./components/Users/UserForm";
+import EditUserPage from "./pages/Users/EditUser";
+import NewUserPage from "./pages/Users/NewUser";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +63,39 @@ const router = createBrowserRouter([
             path: "new",
             element: <NewPostPage />,
             action: addAndEditPostAction,
+          },
+        ],
+      },
+      {
+        path: "users",
+        element: <UsersRootLayout/>,
+        children: [
+          {
+            index: true,
+            element: <UsersPage />,
+            loader: usersLoader,
+          },
+          {
+            path: ":userId",
+            id: "user-detail",
+            loader: userDetailLoader,
+            children: [
+              {
+                index: true,
+                element: <UserDetailPage/>,
+                action: deleteUserAction,
+              },
+              {
+                path: "edit",
+                element: <EditUserPage/>,
+                action: addAndEditUsertAction,
+              },
+            ],
+          },
+          {
+            path: "new",
+            element: <NewUserPage/>,
+            action: addAndEditUsertAction,
           },
         ],
       },
