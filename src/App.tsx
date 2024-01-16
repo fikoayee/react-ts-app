@@ -17,9 +17,11 @@ import ToDosPage, { loader as todosLoader } from "./pages/ToDos/ToDos";
 import ToDosDetailPage, {
   loader as todosDetailLoader,
   action as deleteToDosAction,
+  action as updateToDosAction,
 } from "./pages/ToDos/ToDosDetail";
 import EditToDosPage from "./pages/ToDos/EditToDos";
-import NewToDosPage, { action as newToDos } from "./pages/ToDos/NewToDos";
+import NewToDosPage from "./pages/ToDos/NewToDos";
+import { action as addAndEditToDosAction } from "./components/ToDos/ToDosForm";
 
 // import for users
 import { action as addAndEditPostAction } from "./components/Posts/PostForm";
@@ -131,10 +133,18 @@ const router = createBrowserRouter([
                 element: <ToDosDetailPage />,
                 action: deleteToDosAction,
               },
-              { path: "edit", element: <EditToDosPage /> },
+              { 
+                path: "edit",
+                element: <EditToDosPage /> ,
+                action: addAndEditToDosAction,
+              },
             ],
           },
-          { path: "new", element: <NewToDosPage />, action: newToDos },
+          {
+            path: "new",
+            element: <NewToDosPage />,
+            action: addAndEditToDosAction,
+          },
         ],
       },
       {

@@ -1,5 +1,6 @@
 import ToDosForm from "../../components/ToDos/ToDosForm";
-import { useRouteLoaderData } from "react-router-dom";
+//import { useRouteLoaderData } from "react-router-dom";
+import { json, redirect, useRouteLoaderData } from "react-router-dom"; 
 
 interface ToDos {
   userId: number;
@@ -13,7 +14,8 @@ const EditToDosPage = () => {
 
   return (
     <>
-      <ToDosForm todos={data} />
+      {/* <ToDosForm todos={data} /> */}
+      <ToDosForm method="patch" todos={data} />
     </>
   );
 };
