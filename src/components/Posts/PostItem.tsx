@@ -3,13 +3,7 @@ import classes from "./PostItem.module.css";
 import CommentsList from "../Comments/CommentsList";
 import { useState } from "react";
 import CommentForm from "../Comments/CommentForm";
-
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import {Post} from "../../interfaces/Post.interface"
 interface Props {
   post: Post;
 }

@@ -7,10 +7,10 @@ const UserNavigation: React.FC = () => {
       <nav>
         <ul className={classes.list}>
           <li>
-            <a href="/users">All Posts</a>
+            <a href="/users">All Users</a>
           </li>
           <li>
-            <a href="/users/new">New Post</a>
+            <a href="/users/new">New User</a>
           </li>
         </ul>
       </nav>

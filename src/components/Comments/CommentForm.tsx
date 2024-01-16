@@ -1,13 +1,6 @@
 import { json, redirect } from "react-router-dom";
 import classes from "../Posts/PostForm.module.css";
 
-interface Comment {
-  postId: number;
-  id: number;
-  name: string;
-  email: string;
-  body: string;
-}
 
 interface Props {
   postId: number;

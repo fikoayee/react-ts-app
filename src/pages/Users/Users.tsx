@@ -42,7 +42,7 @@ const UsersPage = () => {
       setUsersData(sortedUsers);
     });
 
-    if( sortedUsers.length != data.length){
+    if( sortedUsers.length !== data.length){
       setUsersData(data)
     }
 

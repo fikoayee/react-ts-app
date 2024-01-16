@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
 import classes from "./PostList.module.css";
-
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import {Post} from "../../interfaces/Post.interface"
 interface Props {
   posts: Post[];
 }

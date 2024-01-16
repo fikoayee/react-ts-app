@@ -20,7 +20,6 @@ import EditToDosPage from "./pages/ToDos/EditToDos";
 import NewToDosPage, { action as newToDos } from "./pages/ToDos/NewToDos";
 import { action as addAndEditPostAction } from "./components/Posts/PostForm";
 import UsersPage, {loader as usersLoader} from "./pages/Users/Users";
-import UsersRootLayout from "./pages/Users/UsersRoot";
 import UserDetailPage, {loader as userDetailLoader, action as deleteUserAction} from "./pages/Users/UserDetail";
 import { action as addAndEditUsertAction } from "./components/Users/UserForm";
 import EditUserPage from "./pages/Users/EditUser";
@@ -68,7 +67,6 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <UsersRootLayout/>,
         children: [
           {
             index: true,

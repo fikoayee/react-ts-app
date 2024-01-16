@@ -30,7 +30,7 @@ const EditUserPage = () => {
   const data = useRouteLoaderData("user-detail") as User;
   return (
     <>
-      <UserForm method='patch'  />
+      <UserForm method='patch' user={data} />
     </>
   );
 };

@@ -1,12 +1,7 @@
 import { Form, json, redirect } from "react-router-dom";
 import classes from "./PostForm.module.css";
+import {Post} from "../../interfaces/Post.interface"
 
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
 
 interface Props {
   post?: Post;

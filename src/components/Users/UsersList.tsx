@@ -1,30 +1,8 @@
 import { Link } from "react-router-dom";
 import classes from "../Posts/PostList.module.css";
-import UsersLoading from "./UsersLoading";
+import DataStatus from "../DataStatus";
+import {User} from "../../interfaces/User.interface"
 
-interface User {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-    address: {
-      street: string;
-      suite: string;
-      city: string;
-      zipcode: string;
-      geo:{
-          lat: number,
-          lng: number
-      }
-    },
-    phone: string;
-    website: string;
-    company: {
-      name: string;
-      catchPhrase: string;
-      bs: string
-    }
-  }
 interface Props {
   users: User[];
 }
@@ -34,7 +12,7 @@ const UsersLists: React.FC<Props> = ({ users }) => {
     <>
       <div className={classes.posts}>
         <h1>Users</h1>
-        {users.length === 0 && <UsersLoading></UsersLoading>} 
+        {users.length === 0 && <DataStatus statusInfo="Loading users..."></DataStatus>} 
         {users.length > 0 && (
           <ul className={classes.list}>
             {users.map((user) => (
@@ -43,7 +21,7 @@ const UsersLists: React.FC<Props> = ({ users }) => {
                   <div className={classes.content}>
                     <h2>{user.name}</h2>
                     <h3>{user.company.name}</h3>
-                    <p>{user.address.city}, Poland</p>
+                    <p>{user.address.city}</p>
                   </div>
                 </Link>
               </li>
