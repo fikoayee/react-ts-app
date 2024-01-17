@@ -4,11 +4,6 @@
     text-align: center;
   }
   
-  .post img {
-    width: 30rem;
-    border-radius: 4px;
-  }
-  
   .actions {
     display: flex;
     gap: 1rem;
@@ -25,9 +20,10 @@
     cursor: pointer;
   }
   
-  .actions button {
+  .actions button,
+  .actions a {
     background-color: transparent;
     border: none;
     color: var(--color-primary-800);
   }
-  
+ 

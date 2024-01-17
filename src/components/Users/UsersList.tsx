@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import classes from "../Posts/PostList.module.css";
+import classes from "../../styles/PostList.module.css";
 import DataStatus from "../DataStatus";
 import {User} from "../../interfaces/User.interface"
 

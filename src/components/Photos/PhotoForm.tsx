@@ -1,6 +1,4 @@
-import { Form } from "react-router-dom";
-import classes from "../Posts/PostForm.module.css";
-import { useRef } from "react";
+import classes from "../../styles/PostForm.module.css"
 
 interface Photo {
     albumId: number;

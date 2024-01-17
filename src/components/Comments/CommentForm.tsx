@@ -1,6 +1,7 @@
 import { json, redirect } from "react-router-dom";
-import classes from "../Posts/PostForm.module.css";
-
+import classes from "../../styles/PostForm.module.css"
+import FormItem from "../FormItem";
+import FormActions from "../FormActions";
 
 interface Props {
   postId: number;
@@ -45,21 +46,30 @@ const CommentForm: React.FC<Props> = ({ postId, onCommentAdd }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={classes.form}>
-      <h2>Add Comment:</h2>
-      <p>
-        <label htmlFor="title">Title</label>
-        <input id="title" type="text" name="title" required minLength={5} />
-      </p>
-      <p>
-        <label htmlFor="body">Content</label>
-        <textarea id="body" name="body" rows={5} required minLength={3} />
-      </p>
-      <div className={classes.actions}>
-        <button type="reset">Clear</button>
-        <button type="submit">Comment</button>
-      </div>
-    </form>
+    <>
+      <h1>Add Comment:</h1>
+      <form onSubmit={handleSubmit} className={classes.form}>
+        <FormItem
+          header="Title"
+          id="title"
+          type="text"
+          isRequired={true}
+          minLength={5}
+          obj={null}
+          objProp={null}
+        />
+        <FormItem
+          header="Content"
+          id="body"
+          type="text"
+          isRequired={true}
+          minLength={8}
+          obj={null}
+          objProp={null}
+        />
+        <FormActions />
+      </form>
+    </>
   );
 };
 export default CommentForm;

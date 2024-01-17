@@ -1,6 +1,4 @@
-import { Link, useSubmit } from "react-router-dom";
-import classes from "../Posts/PostItem.module.css";
-import { useState } from "react";
+import classes from "../../styles/PostItem.module.css";
 import {User} from "../../interfaces/User.interface"
 
 

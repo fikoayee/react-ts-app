@@ -1,5 +1,5 @@
 import { Link, useSubmit } from "react-router-dom";
-import classes from "./PostItem.module.css";
+import classes from "../../styles/PostItem.module.css"
 import CommentsList from "../Comments/CommentsList";
 import { useState } from "react";
 import CommentForm from "../Comments/CommentForm";

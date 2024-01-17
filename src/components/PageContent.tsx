@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from "PageContent.module.css"
 
 interface Props {
   title: string;

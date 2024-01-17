@@ -1,31 +1,9 @@
 import { json, useLoaderData } from "react-router-dom";
 import UsersLists from "../../components/Users/UsersList";
-import { sortUserByDistance } from "./geolocation";
+import { sortUserByDistance } from "../../components/utils/geolocation";
 import { useEffect, useState } from "react";
+import {User} from "../../interfaces/User.interface"
 
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: number;
-      lng: number;
-    };
-  };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
-}
 
 const UsersPage = () => {
   const data = useLoaderData() as User[];

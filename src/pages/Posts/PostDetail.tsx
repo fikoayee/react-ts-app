@@ -1,12 +1,6 @@
 import { useRouteLoaderData, json, redirect } from "react-router-dom";
 import PostItem from "../../components/Posts/PostItem";
-
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import { Post } from "../../interfaces/Post.interface";
 
 const PostDetailPage = () => {
   const data = useRouteLoaderData("post-detail") as Post;
