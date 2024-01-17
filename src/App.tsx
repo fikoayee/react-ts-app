@@ -38,6 +38,7 @@ import AlbumsDetailPage, {
 } from "./pages/Albums/AlbumsDetail";
 import EditAlbumPages from "./pages/Albums/EditAlbums";
 import NewAlbumPages, { action as newAlbum } from "./pages/Albums/NewAlbums";
+import LoginPage from "./pages/LoginPage";
 
 
 const router = createBrowserRouter([
@@ -160,6 +161,11 @@ const router = createBrowserRouter([
             ],
           },
           { path: "new", element: <NewAlbumPages />, action: newAlbum},
+          {
+            index: true,
+            element: <LoginPage />,
+     
+          },
         ],
       },
     ],
