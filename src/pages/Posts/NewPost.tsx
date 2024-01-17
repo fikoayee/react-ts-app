@@ -1,10 +1,10 @@
 
-import UserForm from "../../components/Users/UserForm";
+import PostForm from "../../components/Posts/PostForm";
 
 const NewPostPage = () => {
   return (
     <>
-      <UserForm method="post" />
+      <PostForm method="post" />
     </>
   );
 };

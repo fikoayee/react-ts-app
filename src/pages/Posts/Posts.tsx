@@ -1,12 +1,6 @@
 import { json, useLoaderData } from "react-router-dom";
 import PostsList from "../../components/Posts/PostsList";
-
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import { Post } from "../../interfaces/Post.interface";
 
 const PostsPage = () => {
   const data = useLoaderData() as Post[];

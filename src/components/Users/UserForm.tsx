@@ -1,5 +1,5 @@
 import { Form, json, redirect } from "react-router-dom";
-import classes from "../Posts/PostForm.module.css";
+import classes from "../../styles/PostForm.module.css";
 import {User} from "../../interfaces/User.interface"
 
 

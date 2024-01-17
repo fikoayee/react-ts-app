@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css"
+import NavigationItem from "./NavigationItem";
 
 const MainNavigation = () => {
   return (
@@ -7,21 +7,11 @@ const MainNavigation = () => {
       <header className={classes.header}>
         <nav>
           <ul className={classes.list}>
-            <li>
-              <NavLink to="/" className={({isActive}) => (isActive ? classes.active : undefined)} end>Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/Posts" className={({isActive}) => (isActive ? classes.active : undefined)}>Posts</NavLink>
-            </li>
-            <li>
-              <NavLink to="/ToDos" className={({isActive}) => (isActive ? classes.active : undefined)}>ToDos</NavLink>
-            </li>
-            <li>
-              <NavLink to="/Users" className={({isActive}) => (isActive ? classes.active : undefined)}>Users</NavLink>
-            </li>
-            <li>
-              <NavLink to="/Albums" className={({isActive}) => (isActive ? classes.active : undefined)}>Albums</NavLink>
-            </li>
+          <NavigationItem to="/">Home</NavigationItem>
+          <NavigationItem to="/Posts">Posts</NavigationItem>
+          <NavigationItem to="/ToDos">ToDos</NavigationItem>
+          <NavigationItem to="/Users">Users</NavigationItem>
+          <NavigationItem to="/Albums">Albums</NavigationItem>
           </ul>
         </nav>
       </header>

@@ -1,7 +1,8 @@
 import { Form, json, redirect } from "react-router-dom";
-import classes from "./PostForm.module.css";
-import {Post} from "../../interfaces/Post.interface"
-
+import classes from "../../styles/PostForm.module.css"
+import { Post } from "../../interfaces/Post.interface";
+import FormItem from "../FormItem";
+import FormActions from "../FormActions";
 
 interface Props {
   post?: Post;
@@ -10,38 +11,36 @@ interface Props {
 
 const PostForm: React.FC<Props> = ({ post, method }) => {
   return (
-    <Form method={method} className={classes.form}>
-      <p>
-        <label htmlFor="title">Title</label>
-        <input
+    <>
+      <h1>Create new post</h1>
+      <Form method={method} className={classes.form}>
+        <FormItem
           id="title"
           type="text"
-          name="title"
-          required
-          defaultValue={post ? post.title : ""}
+          header="Title"
+          isRequired={true}
+          obj={post}
+          objProp={post?.title}
+          minLength={3}
         />
-      </p>
-      <p>
-        <label htmlFor="body">Content</label>
-        <textarea
+        <FormItem
           id="body"
-          name="body"
-          rows={5}
-          required
-          defaultValue={post ? post.body : ""}
+          type="text"
+          header="Content"
+          isRequired={true}
+          obj={post}
+          objProp={post?.body}
+          minLength={5}
         />
-      </p>
-      <div className={classes.actions}>
-        <button type="button">Cancel</button>
-        <button>Save</button>
-      </div>
-    </Form>
+        <FormActions />
+      </Form>
+    </>
   );
 };
 export default PostForm;
 
 export async function action(reactRouterObj: any) {
-  const method = reactRouterObj.request.method
+  const method = reactRouterObj.request.method;
   const data = await reactRouterObj.request.formData();
 
   const postData = {
@@ -51,7 +50,7 @@ export async function action(reactRouterObj: any) {
 
   let url = "https://jsonplaceholder.typicode.com/posts";
   if (method === "PATCH") {
-    const postId = reactRouterObj.params.postId
+    const postId = reactRouterObj.params.postId;
     url = `https://jsonplaceholder.typicode.com/posts/${postId}`;
   }
 

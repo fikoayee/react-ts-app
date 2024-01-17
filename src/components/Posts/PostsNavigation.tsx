@@ -1,4 +1,4 @@
-import classes from './PostsNavigation.module.css';
+import classes from "../../styles/PostsNavigation.module.css"
 
 function PostsNavigation() {
   return (
